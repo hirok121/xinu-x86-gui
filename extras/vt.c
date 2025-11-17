@@ -83,6 +83,7 @@ while(1) {
         }
         if (ochars > 0) {
                 signaln(typtr->tyosem, ochars);
+		gui_signal_event();  /* wake GUI to redraw terminal */
         }
 
 	// REMOVE SOON	restore(mask);

@@ -2,6 +2,7 @@
 #include <renderer.h>
 #include <microui.h>
 #include <vt100.h>
+#include <gui.h>
 
 #define NULL 0
 
@@ -367,8 +368,14 @@ int microui() {
   open(MOUSE, NULL, 0);
   open(KEYBOARD, NULL, 0);
 
+  /* initialize GUI event system */
+  gui_events_init();
+
   /* main loop */
   for (;;) {
+        /* wait for GUI events (keyboard, mouse, VT output, or app updates) */
+        wait(gui_event_sem);
+
         r_handle_input(ctx);
 
     /* process frame */

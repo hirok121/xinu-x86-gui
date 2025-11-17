@@ -20,6 +20,7 @@ process mu_gui_demo(void)
 //	buf = getmem(NINA_W*NINA_H*4);
 //	memcpy(buf, nina, NINA_W*NINA_H*4);
 	n = mu_add_win("Demo Nina", 700, 40, NINA_W, NINA_H, buf);
+	gui_signal_redraw(n);  /* notify GUI that window was updated */
 
 	/* program source code (for example, modify surface
 	 * drawn into window

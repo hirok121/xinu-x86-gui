@@ -5,7 +5,8 @@ process	kbdpr(unsigned char *curr_key_pt)
 	open(KEYBOARD, NULL, 0);
 
 	while (TRUE) {
-		read(KEYBOARD, curr_key_pt, 1);     
+		read(KEYBOARD, curr_key_pt, 1);
+		gui_signal_event();  /* wake GUI to process keyboard input */
     }
 
 	close(KEYBOARD);

@@ -24,4 +24,11 @@ void gui_init(void);
 void gui_flush(void);
 char check_bit(unsigned char c, int pos);
 
+/* GUI event system */
+extern sid32 gui_event_sem;
+
+void gui_events_init(void);
+void gui_signal_event(void);
+void gui_signal_redraw(int win_id);
+
 #endif

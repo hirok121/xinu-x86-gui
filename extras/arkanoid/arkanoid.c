@@ -67,6 +67,7 @@ int arkanoid(uint32* buf, int w, int n)
 				break;
 			}
 			allocateRects();
+			gui_signal_redraw(n);  /* notify GUI that window was updated */
 			break;
 
 		case START2_NODRAW: //Press A on Start or GameOver screen to go to game
@@ -90,6 +91,7 @@ int arkanoid(uint32* buf, int w, int n)
 				state = GAME;
 				currentLevel = 0;
 				rectangles = createLevel(currentLevel);
+				gui_signal_redraw(n);  /* notify GUI that window was updated */
 			}
 			break;
 
@@ -256,6 +258,7 @@ int arkanoid(uint32* buf, int w, int n)
 				oldobjs = objs;
 				oldball = ball;
 				objs.cd=0;
+				gui_signal_redraw(n);  /* notify GUI that window was updated */
 			}
 			break;
 
@@ -275,6 +278,7 @@ int arkanoid(uint32* buf, int w, int n)
 			ball.row = 100;
 			ball.col = 100;
 			score = 0;
+			gui_signal_redraw(n);  /* notify GUI that window was updated */
 			break;	
 		}	
 	}

@@ -73,6 +73,7 @@ void reading_keys()
 				}
 			}
 		}
+		gui_signal_redraw(n_galaga_window);  /* notify GUI that window was updated */
 		sleepms(2);
 	 }
 
@@ -240,6 +241,7 @@ int game_galaga(int n) {
 		if (KEY_DOWN_NOW(BUTTON_DOWN) && (player.playerY <= 136)) {
 			player.playerY += playerspeed;
 		}
+		gui_signal_redraw(n);  /* notify GUI that window was updated */
 		sleepms(40);
 
 
@@ -412,6 +414,7 @@ void initialize(){
 			break;
 		if (KEY_DOWN_NOW(BUTTON_ESCAPE))
 			send(pid_control, 1);
+		gui_signal_redraw(n_galaga_window);  /* notify GUI that window was updated */
 		sleepms(2);
 	}
 
@@ -422,6 +425,7 @@ void initialize(){
 		if(KEY_DOWN_NOW(BUTTON_START)){
 			break;
 		}
+		gui_signal_redraw(n_galaga_window);  /* notify GUI that window was updated */
 		sleepms(2);
 	}
 }
